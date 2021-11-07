@@ -5,9 +5,9 @@ class DogParksController < ApplicationController
         render json: dog_parks
     end
 
-    # def show 
-    #     dog_park = DogPark.find(params[:id])
-    #     render json: 
-    # end 
+    def show 
+        dog_park = DogPark.find(params[:id])
+        render json: dog_park, serializer: DogParkShowSerializer
+    end 
 
 end
