@@ -15,7 +15,7 @@ class YelpSearch
     end
 
     def to_dog_parks
-        @businesses.map do |business| 
+        dog_park_ids = self.businesses.map do |business| 
             DogPark.find_or_create_by(yelp_id: business["id"]) do |dog_park|
                 dog_park.name = business["name"]
                 dog_park.url = business["url"]
