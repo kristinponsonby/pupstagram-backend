@@ -8,5 +8,9 @@ class SessionsController < ApplicationController
           render json: {errors: "Invalid Username and/or Password, get good!"}, status: :forbidden
         end
     end
-    
+
+    def autoLogin
+        byebug
+    end
+
 end
