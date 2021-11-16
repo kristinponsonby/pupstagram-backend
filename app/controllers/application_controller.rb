@@ -1,23 +1,21 @@
 class ApplicationController < ActionController::API
-    # skip_before_action :verify_authenticity_token
 
     def encode_token(user_id)
-        JWT.encode({user_id: user_id}, ENV["JWT_SECRET"])
+      JWT.encode({user_id: user_id}, ENV["JWT_SECRET"])
     end
-
+  
     def logged_in_user
-        User.find(decoded_token["user_id"])
+      User.find_by_id(decoded_token["user_id"]) 
     end
-
-    private
-
+  
+    private 
+  
     def get_token
-        request.headers["Authorization"]
+      request.headers["Authorization"]
     end
-    
+  
     def decoded_token
-        JWT.decode(get_token, ENV["JWT_SECRET"])[0]
+      JWT.decode(get_token, ENV["JWT_SECRET"])[0]
     end
-
-end
- 
+  
+  end
