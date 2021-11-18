@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :dog_parks, only: [:create, :index]
+  resources :dog_parks, only: [:create, :index, :show]
   resources :users, only: [:index, :show]
   resources :sessions, only: [:create] 
   get "/me", to: "sessions#autologin"
