@@ -1,4 +1,12 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :caption
+  include Rails.application.routes.url_helpers
+  attributes :id, :image
+  def image
+    if object.image.attached?
+      {
+        url: rails_blob_url(object.image)
+      }
+    end
+  end
   has_one :user
 end
