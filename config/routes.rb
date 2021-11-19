@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :dog_parks, only: [:create, :index, :show]
   resources :users, only: [:index, :show]
   resources :sessions, only: [:create] 
