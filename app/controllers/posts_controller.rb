@@ -6,7 +6,8 @@ class PostsController < ApplicationController
     end
 
     def create
-        post = Post.create(post_params)
+        post = logged_in_user.posts.create(post_params)
+        render json: post
     end
 
     private
