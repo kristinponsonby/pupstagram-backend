@@ -6,11 +6,9 @@ class PostsController < ApplicationController
     end
 
     def create
-        # post = logged_in_user.post.create(post_params)
-        user_post_id = User.find_by(username: post_params[:username]).id
-        post = Post.create(user_id: user_post_id, image: post_params[:image], caption: post_params[:caption] )
-        byebug
-        render json: post
+        user_post_id = logged_in_user.id
+        post = Post.create(user_id: logged_in_user.id, image: post_params[:image], caption: post_params[:caption] )
+        render json: post, user: logged_in_user
     end
 
     private

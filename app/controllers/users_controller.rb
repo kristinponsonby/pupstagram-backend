@@ -13,6 +13,11 @@ class UsersController < ApplicationController
         users = User.all
         render json: users
     end
+
+    def show 
+      user_data = User.find(params[:username])
+      render json: user, serializer: UserSerializer
+  end 
     
     private
 
