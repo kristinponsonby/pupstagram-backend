@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :dog_parks, only: [:create, :index, :show]
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :create]
   resources :sessions, only: [:create] 
   get "/me", to: "sessions#autologin"
   post "/posts", to: 'posts#create'

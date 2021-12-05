@@ -14,15 +14,16 @@ class UsersController < ApplicationController
         render json: users
     end
 
-    def show 
-      user_data = User.find(params[:username])
-      render json: user, serializer: UserSerializer
-  end 
+
+    def show
+        user = User.find_by(params[:id])
+        render json: user
+    end 
     
     private
 
     def user_params
-        params.permit(:username, :email, :password, :zip_code)
+        params.permit(:username, :email, :password, :zip_code, :id)
     end
 
   
